@@ -7,15 +7,11 @@ const NewGameForm = ({ onStartGame }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const trimmedHomeTeam = homeTeam.trim();
-        const trimmedAwayTeam = awayTeam.trim();
-
-        if (trimmedHomeTeam === "" || trimmedAwayTeam === "") {
-            alert("Fields cannot be empty");
+        if (homeTeam.trim() === "" || awayTeam.trim() === "") {
+            alert("Both team names must be non-empty.");
             return;
         }
-
-        onStartGame(trimmedHomeTeam, trimmedAwayTeam);
+        onStartGame(homeTeam, awayTeam);
         setHomeTeam("");
         setAwayTeam("");
     };
@@ -59,3 +55,4 @@ const NewGameForm = ({ onStartGame }) => {
 };
 
 export default NewGameForm;
+

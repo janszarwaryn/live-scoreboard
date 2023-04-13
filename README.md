@@ -1,70 +1,68 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Live Football World Cup Scoreboard
 
-## Available Scripts
+This project is a simple React application for managing and displaying live football scores during the World Cup. It allows users to add new games, update scores, and view the overall summary of the games.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+-   Add new games with home and away teams
+-   Update scores for each game in progress
+-   View a summary of all games
+-   Store game data in localStorage to persist across browser refreshes
+-   Responsive design using Material-UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To install the project, follow these steps:
 
-### `npm test`
+1.  Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+`git clone https://github.com/janszarwaryn/live-scoreboard.git`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2.  Change to the project directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`cd live-scoreboard`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.  Install dependencies:
 
-### `npm run eject`
+`npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4.  Start the development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5.  Open your browser and navigate to [http://localhost:3000](http://localhost:3000/) to view the application.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage
 
-## Learn More
+1.  Add a new game:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    -   Enter the names of the home and away teams in the respective input fields.
+    -   Click the "Start Game" button to add the game to the "Games in Progress" section.
+2.  Update scores:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    -   In the "Games in Progress" section, use the "+" and "-" buttons to increase or decrease the score for each team.
+    -   Scores are automatically updated in the game summary.
+3.  View game summary:
 
-### Code Splitting
+    -   The "Game Summary" section displays a list of all games, including the home and away teams, and their respective scores.
+4.  Finish a game:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    -   In the "Games in Progress" section, click the "Finish Game" button to remove the game from the list of games in progress.
+    -   The game will still be displayed in the game summary.
+5.  Browser refresh:
 
-### Analyzing the Bundle Size
+    -   The application stores game data in localStorage, so your data will persist across browser refreshes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Testing
 
-### Making a Progressive Web App
+To run the tests for the project, use the following command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`npm test`
 
-### Advanced Configuration
+This will run the test suite and display the test results in the terminal.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contributing
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you'd like to contribute to the project, please submit a pull request with your proposed changes or create an issue detailing the changes you'd like to see. :P

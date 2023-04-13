@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewGameForm from "./NewGameForm";
 import GameInProgress from "./GameInProgress";
 import GameSummary from "./GameSummary";
@@ -6,7 +6,14 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const Scoreboard = () => {
-    const [games, setGames] = useState([]);
+    const [games, setGames] = useState(() => {
+        const savedGames = localStorage.getItem("games");
+        return savedGames ? JSON.parse(savedGames) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem("games", JSON.stringify(games));
+    }, [games]);
 
     const handleStartGame = (homeTeam, awayTeam) => {
         const newGame = {
