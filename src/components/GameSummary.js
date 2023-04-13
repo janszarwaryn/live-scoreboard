@@ -2,15 +2,22 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import { styled } from "@mui/system";
+import {styled} from "@mui/system";
 import SportsSoccerIcon from "@mui/icons-material/SportsSoccer";
 
-const SoccerIcon = styled(SportsSoccerIcon)(({ theme }) => ({
+const SoccerIcon = styled(SportsSoccerIcon)(({theme}) => ({
     fontSize: "1.5rem",
     marginRight: theme.spacing(1),
 }));
 
-const GameSummary = ({ games }) => {
+const TeamName = styled("span")(({theme, color, underline}) => ({
+    fontWeight: "bold",
+    fontSize: "1.5rem",
+    textDecoration: underline ? "underline" : "none",
+    color: color,
+}));
+
+const GameSummary = ({games}) => {
     const sortedGames = [...games].sort((a, b) => {
         const aTotalScore = a.homeScore + a.awayScore;
         const bTotalScore = b.homeScore + b.awayScore;
@@ -22,17 +29,29 @@ const GameSummary = ({ games }) => {
         return bTotalScore - aTotalScore;
     });
 
+    const getTeamNameStyle = (homeScore, awayScore) => {
+        if (homeScore > awayScore) {
+            return {color: "green", textTransform: 'capitalize', fontWeight: 'bold'};
+        } else if (homeScore < awayScore) {
+            return {color: "red", textTransform: 'capitalize', fontWeight: 'light'};
+        }
+        return {color: "gray", textTransform: 'capitalize', fontWeight: 'medium'};
+    };
+
     const renderGames = () => {
         return sortedGames.map((game, index) => {
             if (!game) return null;
+            const homeTeamStyle = getTeamNameStyle(game.homeScore, game.awayScore);
+            const awayTeamStyle = getTeamNameStyle(game.awayScore, game.homeScore);
+
             return (
-                <Box key={game.id} mb={2}>
-                    <Paper elevation={2} sx={{ p: 2, display: "flex", alignItems: "center" }}>
-                        <SoccerIcon />
-                        <Typography variant="h6">
-                            {index + 1}. {game.homeTeam} {game.homeScore} - {game.awayTeam} {game.awayScore}
-                        </Typography>
-                    </Paper>
+                <Box key={game.id} mb={2} display="flex" alignItems="center">
+                    <SoccerIcon/>
+                    <Typography variant="body1" display="inline">
+                        {index + 1}.
+                        <TeamName {...homeTeamStyle}>{game.homeTeam}</TeamName> {game.homeScore} -
+                        <TeamName {...awayTeamStyle}>{game.awayTeam}</TeamName> {game.awayScore}
+                    </Typography>
                 </Box>
             );
         });
